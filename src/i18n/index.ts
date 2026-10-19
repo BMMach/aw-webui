@@ -42,7 +42,7 @@ export type AppLocale =
   | 'hi'
   | 'ja'
   | 'fr'
-  | 'pt-BR';
+  | 'pt-BR'
   | 'sw';
 
 const SUPPORTED: AppLocale[] = [
