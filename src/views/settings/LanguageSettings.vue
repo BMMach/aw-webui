@@ -16,6 +16,7 @@ div
         option(value="ja") {{ $t('common.languageJa') }}
         option(value="fr") {{ $t('common.languageFr') }}
         option(value="pt-BR") {{ $t('common.languagePtBR') }}
+        option(value="sw") {{ $t('common.languageSw') }}
         option(value="zh-CN") {{ $t('common.languageZhCN') }}
       span(v-else)
         .aw-loading {{ $t('common.loading') }}

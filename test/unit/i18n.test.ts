@@ -30,6 +30,7 @@ describe('i18n', () => {
     expect(isAppLocale('fr-FR')).toBe(false);
     expect(isAppLocale('pt-BR')).toBe(true);
     expect(isAppLocale('pt')).toBe(false);
+    expect(isAppLocale('sw')).toBe(true);
     expect(isAppLocale('')).toBe(false);
     expect(isAppLocale(null)).toBe(false);
   });
@@ -286,6 +287,25 @@ describe('i18n', () => {
     expect(i18n.locale).toBe('zh-CN');
     expect(document.documentElement.lang).toBe('zh-CN');
     expect(localStorage.getItem('locale')).toBe('zh-CN');
+  });
+
+  test('initial locale detects Swahili browser language', () => {
+    Object.defineProperty(navigator, 'language', {
+      value: 'sw-KE',
+      configurable: true,
+    });
+    const { i18n } = loadI18n();
+    expect(i18n.locale).toBe('sw');
+  });
+
+  test('setAppLocale switches to Swahili messages', () => {
+    const { setAppLocale, i18n } = loadI18n();
+    setAppLocale('sw');
+    expect(i18n.locale).toBe('sw');
+    expect(i18n.t('common.languageSw')).toBe('Kiswahili');
+    expect(i18n.t('common.save')).not.toBe('Save');
+    expect(document.documentElement.lang).toBe('sw');
+    expect(localStorage.getItem('locale')).toBe('sw');
   });
 
   test('setAppLocale falls back to en for invalid locale', () => {

@@ -67,6 +67,7 @@ export default {
     languageJa: '日本語',
     languageFr: 'Français',
     languagePtBR: 'Português (Brasil)',
+    languageSw: 'Kiswahili',
     rangeTo: 'a',
     last7d: 'Últimos 7 días',
     last30d: 'Últimos 30 días',

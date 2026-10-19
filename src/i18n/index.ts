@@ -12,6 +12,7 @@ import 'moment/locale/hi';
 import 'moment/locale/ja';
 import 'moment/locale/fr';
 import 'moment/locale/pt-br';
+import 'moment/locale/sw';
 
 import en from './locales/en';
 import uk from './locales/uk';
@@ -25,6 +26,7 @@ import hi from './locales/hi';
 import ja from './locales/ja';
 import fr from './locales/fr';
 import ptBR from './locales/pt-BR';
+import sw from './locales/sw';
 
 Vue.use(VueI18n);
 
@@ -41,6 +43,7 @@ export type AppLocale =
   | 'ja'
   | 'fr'
   | 'pt-BR';
+  | 'sw';
 
 const SUPPORTED: AppLocale[] = [
   'en',
@@ -55,6 +58,7 @@ const SUPPORTED: AppLocale[] = [
   'ja',
   'fr',
   'pt-BR',
+  'sw',
 ];
 
 export function isAppLocale(value: string | null | undefined): value is AppLocale {
@@ -74,6 +78,7 @@ const HTML_LANG: Record<AppLocale, string> = {
   ja: 'ja',
   fr: 'fr',
   'pt-BR': 'pt-BR',
+  sw: 'sw',
 };
 
 function detectBrowserLocale(): AppLocale | null {
@@ -93,6 +98,7 @@ function detectBrowserLocale(): AppLocale | null {
   if (lang.startsWith('fr')) return 'fr';
   // Brazilian Portuguese is the only Portuguese variant; pt-PT users get it too.
   if (lang.startsWith('pt')) return 'pt-BR';
+  if (lang.startsWith('sw')) return 'sw';
   if (lang.startsWith('en')) return 'en';
   return null;
 }
@@ -122,6 +128,7 @@ const MOMENT_LOCALE: Record<AppLocale, string> = {
   ja: 'ja',
   fr: 'fr',
   'pt-BR': 'pt-br',
+  sw: 'sw',
 };
 
 const initialLocale = getInitialLocale();
@@ -129,7 +136,7 @@ const initialLocale = getInitialLocale();
 export const i18n = new VueI18n({
   locale: initialLocale,
   fallbackLocale: 'en',
-  messages: { en, uk, de, ru, 'zh-CN': zhCN, sv, es, ar, hi, ja, fr, 'pt-BR': ptBR },
+  messages: { en, uk, de, ru, 'zh-CN': zhCN, sv, es, ar, hi, ja, fr, 'pt-BR': ptBR, sw },
   silentTranslationWarn: process.env.NODE_ENV === 'production',
 });
 
