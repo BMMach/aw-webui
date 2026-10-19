@@ -34,6 +34,7 @@ import UncategorizedHintSettings from '~/views/settings/UncategorizedHintSetting
 import CategorizationSettings from '~/views/settings/CategorizationSettings.vue';
 import LandingPageSettings from '~/views/settings/LandingPageSettings.vue';
 import DeveloperSettings from '~/views/settings/DeveloperSettings.vue';
+import CorsConfigModal from '~/components/CorsConfigModal.vue';
 import Theme from '~/views/settings/Theme.vue';
 import ColorSettings from '~/views/settings/ColorSettings.vue';
 import ActivePatternSettings from '~/views/settings/ActivePatternSettings.vue';
@@ -63,6 +64,7 @@ export default {
     ActivePatternSettings,
     PrivacyFilterSettings,
     AwNotifySettings,
+    CorsConfigModal,
   },
   beforeRouteLeave(to, from, next) {
     const categoryStore = useCategoryStore();
@@ -119,7 +121,7 @@ export default {
       const developer: Group = {
         id: 'developer',
         label: this.$t('settings.groups.developer'),
-        components: [{ name: 'DeveloperSettings' }],
+        components: [{ name: 'DeveloperSettings' }, { name: 'CorsConfigModal' }],
       };
 
       const notifications: Group = {
